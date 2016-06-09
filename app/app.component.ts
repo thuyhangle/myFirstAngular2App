@@ -9,6 +9,13 @@ import { Component } from '@angular/core';
   			<label>name: </label>
   			<input [(ngModel)]="hero.name" placeholder="name">
   		</div>
+  		<h2>My Heroes</h2>
+		<ul class="heroes">
+			<li *ngFor="let hero of heroes">
+			    <span class="badge">{{hero.id}}</span> {{hero.name}}
+			</li>
+		</ul>
+
   		`
 })
 export class AppComponent {
@@ -17,6 +24,7 @@ export class AppComponent {
 		id: 1,
 		name: 'Windstorm'
 	};
+	public heroes = HEROES;
  }
 
 export class Hero {
@@ -25,6 +33,8 @@ export class Hero {
 }
 
 // let hero: Hero = {};
+
+
 
 var HEROES: Hero[] = [
   { "id": 11, "name": "Mr. Nice" },
