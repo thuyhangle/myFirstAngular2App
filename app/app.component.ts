@@ -86,6 +86,11 @@ export class AppComponent {
 
     // sets the selectedHero property to the hero the user clicked.
     onSelect(hero: Hero) { this.selectedHero = hero; }
+    getHeroes() {
+		this.heroes = this.heroService.getHeroes();
+    }
+
+
 }
 
 heroes: Hero[];
