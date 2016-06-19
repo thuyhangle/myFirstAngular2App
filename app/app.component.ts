@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Hero } from './hero';
 import { HeroDetailComponent } from './hero-detail.component';
 import { HeroService } from './hero.service';
+
+constructor( private heroService: HeroService) { }
 // export class Hero {
 // 	id: number;
 // 	name: string;
@@ -74,7 +76,8 @@ import { HeroService } from './hero.service';
 			border-radius: 4px 0 0 4px;
 		}
 	`],
-	directives: [HeroDetailComponent]
+	directives: [HeroDetailComponent],
+	providers: [HeroService]
 })
 export class AppComponent {
 	title = 'Tour of Heroes';
