@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Hero } from './hero';
 import { HeroDetailComponent } from './hero-detail.component';
 import { HeroService } from './hero.service';
+import { OnInit } from '@angular/core';
 
-constructor( private heroService: HeroService) { }
 // export class Hero {
 // 	id: number;
 // 	name: string;
@@ -79,17 +79,24 @@ constructor( private heroService: HeroService) { }
 	directives: [HeroDetailComponent],
 	providers: [HeroService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 	title = 'Tour of Heroes';
 	public heroes = HEROES;
 	selectedHero: Hero;
 
     // sets the selectedHero property to the hero the user clicked.
-    onSelect(hero: Hero) { this.selectedHero = hero; }
+
     getHeroes() {
 		this.heroes = this.heroService.getHeroes();
+		this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+
     }
 
+    ngOnInit() {
+		this.getHeroes();
+	}
+
+	onSelect(hero: Hero) { this.selectedHero = hero; }
 
 }
 
